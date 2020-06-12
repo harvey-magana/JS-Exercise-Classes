@@ -140,8 +140,11 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian {
-  constructor({specialty, favLanguage, catchPhrase}) {
-    super({specialty, favLanguage, catchPhrase})
+  constructor({name, age, location, specialty, favLanguage, catchPhrase}) {
+    super({name, age, location})
+    this.name = name;
+    this.age = age;
+    this.location = location;
     this.specialty = specialty;
     this.favLanguage = favLanguage;
     this.catchPhrase = catchPhrase;
@@ -151,8 +154,8 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${subject}`;
   }
 
-  grade(student) {
-    return `${student} receives a perfect score on ${subject}`;
+  grade({student}, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -173,10 +176,21 @@ class Instructor extends Lambdasian {
 */
 class Student extends Lambdasian {
   constructor({previousBackground, className, favSubjects}) {
-    super({previousBackground, className, favSubjects}
+    super({previousBackground, className, favSubjects})
       this.previousBackground = previousBackground;
       this.className = className;
       this.favSubjects = favSubjects;
+  }
+  listSubjects() {
+    return `Loving ${this.favSubjects}!`;
+  }
+
+  PRAssignment() {
+    return `${this.name} has submitted a PR for ${this.subject}`;
+  }
+
+  sprintChallenge() {
+    return `${this.name} has begun sprint challenge on ${this.subject}`;
   }
 
 }
