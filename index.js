@@ -154,10 +154,11 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${subject}`;
   }
 
-  grade({student}, subject) {
-    return `${student.name} receives a perfect score on ${subject}`;
+  grade(student, subject) {
+    return `${student} receives a perfect score on ${subject}`;
   }
 }
+
 
 /*
   TASK 5
@@ -185,17 +186,15 @@ class Student extends Lambdasian {
       this.favSubjects = favSubjects;
   }
   listSubjects() {
-    for(let i = 0; i < this.favSubjects.length; i++) {
-      console.log("Loving " + this.favSubjects.join(", ") + "!");
-    }
+    return `Loving ${this.favSubjects.join(", ")}!`
   }
 
   PRAssignment(subject) {
-    return `${this.name} has submitted a PR for ${this.subject}`;
+    return `${this.name} has submitted a PR for ${subject}`;
   }
 
   sprintChallenge(subject) {
-    return `${this.name} has begun sprint challenge on ${this.subject}`;
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -212,8 +211,23 @@ class Student extends Lambdasian {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor{
+  constructor({gradClassName, favInstructor}) {
+    super({specialty, favLanguage, catchPhrase})
+    this.specialty = specialty;
+    this.favLanguage = favLanguage;
+    this.catchPhrase = catchPhrase;
+    this.gradClassName = gradClassName;
+    this.favInstructor = favInstructor;
+  }
 
+  standUp(channel) {
+    return `${this.name} accounces to ${channel}, @channel standy times!`;
+  } 
+
+  debugsCode({student}, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
 
 /*
