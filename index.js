@@ -213,6 +213,10 @@ class ProjectManager extends Instructor{
     this.favInstructor = favInstructor;
   }
 
+  static grade(student, subject) {
+    return `${student} receives a perfect score on ${subject}`;
+  }
+
   standUp(channel) {
     return `${this.name} accounces to ${channel}, @channel standy times!`;
   } 
