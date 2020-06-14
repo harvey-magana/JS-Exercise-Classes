@@ -59,10 +59,13 @@ class Person {
     return this.stomach = [];
   }
 
-  toString(name, age) {
+  toString() {
     return `${this.name} ${this.age}`;
   }
 }
+
+const person1 = new Person("Jeff", 20, stomach=[]);
+console.log(person1.toString());
 
 /*
   TASK 2
@@ -91,15 +94,23 @@ class Car {
   }
 
   drive(distance) {
-    this.odometer += distance;
-    this.tank -= distance / this.milesPerGallon;
-    if (this.tank <= 0) {
-      this.odometer += this.tank * this.milesPerGallon;
-      this.tank = 0;
-      return `I ran out of fuel at ${this.odometer} miles!`;
-    }
+    if(distance) {
+      this.odometer += distance
+      this.tank -= Math.round(distance / this.milesPerGallon);
+      if (this.tank <= 0) {
+        this.odometer += this.tank * this.milesPerGallon;
+        //this.tank = 0;
+        return `I ran out of fuel at ${this.odometer} miles!`;
+      }
+    } 
   }
 }
+
+const fiat = new Car("Fiat 500", 33);
+console.log(fiat.fill(10));
+console.log(fiat);
+console.log(fiat.drive(315));
+
 
 /*
   TASK 3
@@ -113,6 +124,7 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
+/*
 class Lambdasian {
   constructor({name, age, location}) {
     this.name = name;
@@ -123,7 +135,7 @@ class Lambdasian {
   speak() {
     return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
-}
+}*/
 
 /*
   TASK 4
@@ -139,6 +151,7 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
+/*
 class Instructor extends Lambdasian {
   constructor({name, age, location, specialty, favLanguage, catchPhrase}) {
     super({name, age, location})
@@ -154,7 +167,7 @@ class Instructor extends Lambdasian {
   grade(student, subject) {
     return `${student} receives a perfect score on ${subject}`;
   }
-}
+}*/
 
 
 /*
@@ -173,6 +186,7 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
+/*
 class Student extends Lambdasian {
   constructor({name, age, location, previousBackground, className, favSubjects}) {
     super({name, age, location})
@@ -191,7 +205,7 @@ class Student extends Lambdasian {
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
-}
+}*/
 
 /*
   TASK 6
@@ -206,6 +220,8 @@ class Student extends Lambdasian {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
+
+/*
 class ProjectManager extends Instructor{
   constructor({name, age, location, specialty, favLanguage, catchPhrase, gradClassName, favInstructor}) {
     super({name, age, location, specialty, favLanguage, catchPhrase})
@@ -224,7 +240,7 @@ class ProjectManager extends Instructor{
   debugsCode(student, subject) {
     return `${this.name} debugs ${student}'s code on ${subject}`;
   }
-}
+}*/
 
 /*
   STRETCH PROBLEM (no tests!)
