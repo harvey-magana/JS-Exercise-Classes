@@ -124,19 +124,21 @@ console.log(fiat.drive(315));
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
-/*
+
 class Lambdasian {
-  constructor({name, age, location}) {
+  constructor(name, age, location) {
     this.name = name;
     this.age = age;
     this.location = location;
   }
 
   speak() {
-    return `Hello my name is ${this.name}, I am from ${this.location}`;
+    return `Hello my name is ${this.name}, I am from ${this.location}.`;
   }
-}*/
+}
 
+const lambda = new Lambdasian("Biff", 25, "Fresno");
+console.log(lambda.speak());
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -151,10 +153,10 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-/*
+
 class Instructor extends Lambdasian {
-  constructor({name, age, location, specialty, favLanguage, catchPhrase}) {
-    super({name, age, location})
+  constructor(name, age, location, specialty, favLanguage, catchPhrase) {
+    super(name, age, location)
     this.specialty = specialty;
     this.favLanguage = favLanguage;
     this.catchPhrase = catchPhrase;
@@ -167,8 +169,10 @@ class Instructor extends Lambdasian {
   grade(student, subject) {
     return `${student} receives a perfect score on ${subject}`;
   }
-}*/
+}
 
+const teacher = new Instructor("Mr. Brazil", 35, "Lancaster", "Air Guitar", "Pascal", "Eyes on your work.")
+console.log(teacher.grade("Jimmy", "Shell scripting"));
 
 /*
   TASK 5
@@ -186,10 +190,10 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-/*
+
 class Student extends Lambdasian {
-  constructor({name, age, location, previousBackground, className, favSubjects}) {
-    super({name, age, location})
+  constructor(name, age, location, previousBackground, className, favSubjects) {
+    super(name, age, location)
       this.previousBackground = previousBackground;
       this.className = className;
       this.favSubjects = favSubjects;
@@ -205,8 +209,10 @@ class Student extends Lambdasian {
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
-}*/
+}
 
+const jimmy = new Student("Jimmy", 17, "Lancaster", "Shipping", "Coffee", "Java")
+console.log(jimmy.sprintChallenge("Java"));
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
