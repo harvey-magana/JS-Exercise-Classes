@@ -219,10 +219,6 @@ class ProjectManager extends Instructor{
     this.favInstructor = favInstructor;
   }
 
-  grade(student, subject) {
-    return `${student} receives a perfect score on ${subject}`;
-  }
-
   standUp(channel) {
     return `${this.name} accounces to ${channel}, @channel standy times!`;
   } 
@@ -232,6 +228,7 @@ class ProjectManager extends Instructor{
   }
 }
 
+let pm = new ProjectManager()
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
