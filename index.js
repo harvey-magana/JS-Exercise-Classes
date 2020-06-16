@@ -64,9 +64,6 @@ class Person {
   }
 }
 
-const person1 = new Person("Jeff", 20, stomach=[]);
-console.log(person1.toString());
-
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -94,22 +91,17 @@ class Car {
   }
 
   drive(distance) {
-    if(distance) {
-      this.odometer += distance
-      this.tank -= Math.round(distance / this.milesPerGallon);
-      if (this.tank <= 0) {
-        this.odometer += this.tank * this.milesPerGallon;
-        //this.tank = 0;
+    if(distance > 0) {
+      this.odometer += distance +1;
+      this.tank -= (distance / this.milesPerGallon);
+      if (this.tank < 0) {
+        this.odometer += distance;
+        this.tank = 0;
         return `I ran out of fuel at ${this.odometer} miles!`;
       }
     } 
   }
 }
-
-const fiat = new Car("Fiat 500", 33);
-console.log(fiat.fill(10));
-console.log(fiat);
-console.log(fiat.drive(315));
 
 
 /*
@@ -126,7 +118,7 @@ console.log(fiat.drive(315));
 */
 
 class Lambdasian {
-  constructor(name, age, location) {
+  constructor({name, age, location}) {
     this.name = name;
     this.age = age;
     this.location = location;
@@ -137,8 +129,6 @@ class Lambdasian {
   }
 }
 
-const lambda = new Lambdasian("Biff", 25, "Fresno");
-console.log(lambda.speak());
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -155,8 +145,8 @@ console.log(lambda.speak());
 */
 
 class Instructor extends Lambdasian {
-  constructor(name, age, location, specialty, favLanguage, catchPhrase) {
-    super(name, age, location)
+  constructor({name, age, location, specialty, favLanguage, catchPhrase}) {
+    super({name, age, location})
     this.specialty = specialty;
     this.favLanguage = favLanguage;
     this.catchPhrase = catchPhrase;
@@ -170,9 +160,6 @@ class Instructor extends Lambdasian {
     return `${student} receives a perfect score on ${subject}`;
   }
 }
-
-const teacher = new Instructor("Mr. Brazil", 35, "Lancaster", "Air Guitar", "Pascal", "Eyes on your work.")
-console.log(teacher.grade("Jimmy", "Shell scripting"));
 
 /*
   TASK 5
@@ -190,10 +177,9 @@ console.log(teacher.grade("Jimmy", "Shell scripting"));
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-
 class Student extends Lambdasian {
-  constructor(name, age, location, previousBackground, className, favSubjects) {
-    super(name, age, location)
+  constructor({name, age, location, previousBackground, className, favSubjects = []}) {
+    super({name, age, location})
       this.previousBackground = previousBackground;
       this.className = className;
       this.favSubjects = favSubjects;
@@ -211,8 +197,6 @@ class Student extends Lambdasian {
   }
 }
 
-const jimmy = new Student("Jimmy", 17, "Lancaster", "Shipping", "Coffee", "Java")
-console.log(jimmy.sprintChallenge("Java"));
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -227,7 +211,7 @@ console.log(jimmy.sprintChallenge("Java"));
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-/*
+
 class ProjectManager extends Instructor{
   constructor({name, age, location, specialty, favLanguage, catchPhrase, gradClassName, favInstructor}) {
     super({name, age, location, specialty, favLanguage, catchPhrase})
@@ -235,7 +219,7 @@ class ProjectManager extends Instructor{
     this.favInstructor = favInstructor;
   }
 
-  static grade(student, subject) {
+  grade(student, subject) {
     return `${student} receives a perfect score on ${subject}`;
   }
 
@@ -246,7 +230,7 @@ class ProjectManager extends Instructor{
   debugsCode(student, subject) {
     return `${this.name} debugs ${student}'s code on ${subject}`;
   }
-}*/
+}
 
 /*
   STRETCH PROBLEM (no tests!)
